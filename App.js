@@ -1,6 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
+
+import Home from './src/pages/Home'
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Feed" component={Home} />
+      <Drawer.Screen name="Article" component={Home} />
+    </Drawer.Navigator>
+  );
+}
+
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -12,10 +29,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.j to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyDrawer />
+    </NavigationContainer>
+    
   );
 }
 
