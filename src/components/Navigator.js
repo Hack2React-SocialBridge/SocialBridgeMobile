@@ -144,6 +144,7 @@ function Drawer() {
       <DrawerNavigator.Screen name='NGO' component={Home} />
       <DrawerNavigator.Screen name='Baza Wiedzy' component={Home} />
       <DrawerNavigator.Screen name='Wyszukiwarka' component={Home} />
+      <DrawerNavigator.Screen name='Profil' component={Home} options={{presentation: 'modal'}}/>
       <DrawerNavigator.Screen name='Ustawienia' component={Home} />
       <DrawerNavigator.Screen name='Wyloguj się' component={Home} />
     </DrawerNavigator.Navigator>
@@ -151,9 +152,5 @@ function Drawer() {
 }
 
 export default function Navigator() {
-  return <StackNavigator.Navigator screenOptions={{headerShown: false}}>
-    <StackNavigator.Screen name='Drawer' component={Drawer}/>
-    <StackNavigator.Screen name='Profil' component={Home}/>
-    <StackNavigator.Screen name='Settings' component={Home}/>
-  </StackNavigator.Navigator>;
+  return <Drawer></Drawer>
 }
