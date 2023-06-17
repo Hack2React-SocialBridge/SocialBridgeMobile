@@ -81,7 +81,7 @@ export default function Header({ navigation, title }) {
               alignItems: "center",
               flexDirection: "row",
             }}
-            onPress={() => navigation.navigate("Profil")}
+            onPress={() => navigation.navigate("Profil NGO")}
           >
             <View style={{ alignItems: "flex-end", marginHorizontal: 8 }}>
               <Text

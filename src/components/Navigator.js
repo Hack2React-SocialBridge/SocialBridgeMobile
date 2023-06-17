@@ -7,6 +7,7 @@ import {
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Svg, Path } from "react-native-svg";
 import Home from "../pages/Home";
+import NGOProfile from "../pages/NGOProfile";
 import { useLinkBuilder } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -144,7 +145,7 @@ function Drawer() {
       <DrawerNavigator.Screen name='NGO' component={Home} />
       <DrawerNavigator.Screen name='Baza Wiedzy' component={Home} />
       <DrawerNavigator.Screen name='Wyszukiwarka' component={Home} />
-      <DrawerNavigator.Screen name='Profil' component={Home} options={{presentation: 'modal'}}/>
+      <DrawerNavigator.Screen name='Mój Profil' component={Home} options={{presentation: 'modal'}}/>
       <DrawerNavigator.Screen name='Ustawienia' component={Home} />
       <DrawerNavigator.Screen name='Wyloguj się' component={Home} />
     </DrawerNavigator.Navigator>
@@ -152,5 +153,8 @@ function Drawer() {
 }
 
 export default function Navigator() {
-  return <Drawer />
+  return <StackNavigator.Navigator screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
+    <StackNavigator.Screen name='Drawer' component={Drawer} />
+    <StackNavigator.Screen name='Profil NGO' component={NGOProfile} />
+  </StackNavigator.Navigator>
 }

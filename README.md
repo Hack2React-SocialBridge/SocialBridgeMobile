@@ -68,9 +68,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 Project created within Hack2React Hackathon!
+Its based on [this Figma Project](https://www.figma.com/file/UIAG2efh4JgZRxowyVN6sh/Untitled?type=design&node-id=64-428&t=KDfRcPIuvMDFqeXw-0)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
