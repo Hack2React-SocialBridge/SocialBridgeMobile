@@ -5,11 +5,13 @@ import {
   createDrawerNavigator,
 } from "@react-navigation/drawer";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Svg, Path } from "react-native-svg";
+import { Svg, Path, G, Defs, Rect, ClipPath } from "react-native-svg";
 import Home from "../pages/Home";
 import NGOProfile from "../pages/NGOProfile";
 import { useLinkBuilder } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { CalendarSvg, HomeSvg, MapSvg, NGOSvg } from "./Svg";
 
 const StackNavigator = createNativeStackNavigator();
 const DrawerNavigator = createDrawerNavigator();
@@ -125,7 +127,7 @@ function Drawer() {
         drawerItemStyle: {
           marginHorizontal: 20,
           borderRadius: 18,
-          paddingLeft: 25,
+          paddingLeft: 15,
           paddingVertical: 2,
         },
         drawerLabelStyle: {
@@ -135,26 +137,65 @@ function Drawer() {
           color: "#212124",
         },
         // @TODO: DrawerIcons
-        drawerIcon: () => <Text></Text>,
       })}
       drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <DrawerNavigator.Screen name='Aktualności' component={Home} />
-      <DrawerNavigator.Screen name='Kalendarz' component={Home} />
-      <DrawerNavigator.Screen name='Mapa' component={Home} />
-      <DrawerNavigator.Screen name='NGO' component={Home} />
-      <DrawerNavigator.Screen name='Baza Wiedzy' component={Home} />
-      <DrawerNavigator.Screen name='Wyszukiwarka' component={Home} />
-      <DrawerNavigator.Screen name='Mój Profil' component={Home} options={{presentation: 'modal'}}/>
-      <DrawerNavigator.Screen name='Ustawienia' component={Home} />
-      <DrawerNavigator.Screen name='Wyloguj się' component={Home} />
+      <DrawerNavigator.Screen
+        name='Aktualności'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Kalendarz'
+        component={Home}
+        options={{ drawerIcon: () => <CalendarSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Mapa'
+        component={Home}
+        options={{ drawerIcon: () => <MapSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='NGO'
+        component={Home}
+        options={{ drawerIcon: () => <NGOSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Baza Wiedzy'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Wyszukiwarka'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Mój Profil'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Ustawienia'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
+      <DrawerNavigator.Screen
+        name='Wyloguj się'
+        component={Home}
+        options={{ drawerIcon: () => <HomeSvg /> }}
+      />
     </DrawerNavigator.Navigator>
   );
 }
 
 export default function Navigator() {
-  return <StackNavigator.Navigator screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
-    <StackNavigator.Screen name='Drawer' component={Drawer} />
-    <StackNavigator.Screen name='Profil NGO' component={NGOProfile} />
-  </StackNavigator.Navigator>
+  return (
+    <StackNavigator.Navigator
+      screenOptions={{ headerShown: false, animation: "slide_from_right" }}
+    >
+      <StackNavigator.Screen name='Drawer' component={Drawer} />
+      <StackNavigator.Screen name='Profil NGO' component={NGOProfile} />
+    </StackNavigator.Navigator>
+  );
 }
