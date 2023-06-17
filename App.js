@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
-import Drawer from "./src/components/Drawer";
+import Navigator from "./src/components/Navigator";
 
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Drawer />
+      <Navigator />
     </NavigationContainer>
   );
 }

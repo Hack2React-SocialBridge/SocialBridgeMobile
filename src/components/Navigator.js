@@ -8,7 +8,9 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Svg, Path } from "react-native-svg";
 import Home from "../pages/Home";
 import { useLinkBuilder } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+const StackNavigator = createNativeStackNavigator();
 const DrawerNavigator = createDrawerNavigator();
 
 // function CustomDrawerItemList({ state, navigation, descriptors }) {
@@ -81,9 +83,6 @@ const DrawerNavigator = createDrawerNavigator();
 // }
 
 function CustomDrawerContent(props) {
-  {
-    console.log(props);
-  }
   return (
     <DrawerContentScrollView {...props}>
       <Pressable
@@ -116,7 +115,7 @@ function CustomDrawerContent(props) {
   );
 }
 
-export default function Drawer() {
+function Drawer() {
   return (
     <DrawerNavigator.Navigator
       screenOptions={() => ({
@@ -149,4 +148,12 @@ export default function Drawer() {
       <DrawerNavigator.Screen name='Wyloguj się' component={Home} />
     </DrawerNavigator.Navigator>
   );
+}
+
+export default function Navigator() {
+  return <StackNavigator.Navigator screenOptions={{headerShown: false}}>
+    <StackNavigator.Screen name='Drawer' component={Drawer}/>
+    <StackNavigator.Screen name='Profil' component={Home}/>
+    <StackNavigator.Screen name='Settings' component={Home}/>
+  </StackNavigator.Navigator>;
 }
