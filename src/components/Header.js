@@ -24,12 +24,12 @@ function HeaderBackground({ children }) {
   const image = require("../../assets/headerBackground.png");
   const gradient = require("../../assets/headerGradient.png");
 
-  const height = 170 + 32 + StatusBar.currentHeight;
+  const height = 170 + 32 + (StatusBar.currentHeight || 0);
 
   return (
     <ImageBackground
       style={{
-        top: -StatusBar.currentHeight,
+        top: -(StatusBar.currentHeight || 0),
         width: "100%",
         height: height,
       }}
@@ -44,7 +44,7 @@ function HeaderBackground({ children }) {
         resizeMode='cover'
       >
         <View style={{ flex: 1 }}>
-          <View style={{ height: StatusBar.currentHeight }}></View>
+          <View style={{ height: StatusBar.currentHeight || 0 }}></View>
           {children}
           <View style={{ height: 32 }}></View>
         </View>
@@ -68,7 +68,7 @@ export default function Header({ navigation, title }) {
             justifyContent: "space-between",
             paddingHorizontal: 16,
             paddingBottom: 32,
-            marginTop: StatusBar.currentHeight,
+            marginTop: StatusBar.currentHeight || 0,
           }}
         >
           <Pressable
@@ -119,8 +119,9 @@ export default function Header({ navigation, title }) {
             position: "absolute",
             width: "100%",
             borderTopWidth: 32,
+            borderBottomWidth: 32,
             borderColor: "#fff",
-            bottom: -32,
+            bottom: StatusBar.currentHeight? -32: 0,
             borderTopLeftRadius: 32,
             borderTopRightRadius: 32,
           }}
@@ -130,9 +131,9 @@ export default function Header({ navigation, title }) {
         style={{
           position: "absolute",
           width: "100%",
-          height: StatusBar.currentHeight,
+          height: StatusBar.currentHeight || 32,
           paddingHorizontal: 22,
-          backgroundColor: "#fff",
+          backgroundColor: "transparent",
           bottom: 0,
         }}
       >
