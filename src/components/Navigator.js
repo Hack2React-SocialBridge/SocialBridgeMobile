@@ -152,5 +152,5 @@ function Drawer() {
 }
 
 export default function Navigator() {
-  return <Drawer></Drawer>
+  return <Drawer />
 }
