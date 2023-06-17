@@ -8,6 +8,18 @@ import {
 } from "react-native";
 import { Svg, Path } from "react-native-svg";
 
+function HamburgerSvg() {
+  return <Svg
+    width='32'
+    height='18'
+    viewBox='0 0 32 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <Path d='M0 1.5H32M0 9H32M0 16.5H32' stroke='#fff' strokeWidth='3' />
+  </Svg>;
+}
+
 function HeaderBackground({ children }) {
   const image = require("../../assets/headerBackground.png");
   const gradient = require("../../assets/headerGradient.png");
@@ -42,6 +54,8 @@ function HeaderBackground({ children }) {
 }
 
 export default function Header({ navigation, title }) {
+  const name = "Anastazja";
+
   return (
     <>
       <HeaderBackground>
@@ -61,19 +75,7 @@ export default function Header({ navigation, title }) {
             style={{ height: "100%", justifyContent: "center" }}
             onPress={() => navigation.openDrawer()}
           >
-            <Svg
-              width='32'
-              height='18'
-              viewBox='0 0 32 18'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <Path
-                d='M0 1.5H32M0 9H32M0 16.5H32'
-                stroke='#fff'
-                strokeWidth='3'
-              />
-            </Svg>
+            <HamburgerSvg />
           </Pressable>
           <Pressable
             style={{
@@ -92,7 +94,7 @@ export default function Header({ navigation, title }) {
                   color: "#fff",
                 }}
               >
-                Nazwa
+                {name}
               </Text>
               <Text
                 style={{

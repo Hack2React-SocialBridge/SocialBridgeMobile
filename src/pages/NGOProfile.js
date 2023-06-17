@@ -281,9 +281,9 @@ function NGOProfileSubviews({ activeCategory }) {
 
   const categoryComponents = {
     "O nas": <AboutUs />,
-    Aktualności: <RenderPosts />,
-    Wydarzenia: <Component />,
-    Projekty: <Component />,
+    "Aktualności": <RenderPosts />,
+    "Wydarzenia": <Component />,
+    "Projekty": <Component />,
   };
 
   return categoryComponents[activeCategory] || null;
