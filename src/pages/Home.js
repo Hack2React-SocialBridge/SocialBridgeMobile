@@ -1,18 +1,17 @@
-import Header from "../components/Header";
 import { FlatList, View, Text } from "react-native";
+import Header from "../components/Header";
+import Post from '../components/Post';
 
 export default function Home({ route, navigation }) {
   const DATA = [{}, {}, {}, {}];
   return (
-    <View style={{ backgroundColor: "#ff0333", flex: 1 }}>
+    <View style={{ backgroundColor: "#fff", flex: 1 }}>
       <FlatList
         style={{ flex: 1 }}
-        scrollEnabled={false}
+        showsVerticalScrollIndicator={false}
         data={DATA}
-        renderItem={(e) => (
-          <View
-            style={{ width: 20, height: 1000, backgroundColor: "#fff" }}
-          ></View>
+        renderItem={(data) => (
+          <Post data={data} />
         )}
         ListHeaderComponent={
           <Header
