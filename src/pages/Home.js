@@ -37,8 +37,8 @@ export default function Home({ route, navigation }) {
                 refreshControl={
                     <RefreshControl
                         refreshing={refreshing}
-                        onRefresh={() => refreshPosts}
-                    ></RefreshControl>
+                        onRefresh={() => refreshPosts()}
+                    />
                 }
                 ListHeaderComponent={
                     <Header
