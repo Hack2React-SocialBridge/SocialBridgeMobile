@@ -70,7 +70,8 @@ export default function Post({ data }) {
     return (
         <View style={{ padding: 22 }}>
             <View style={{ flexDirection: "row", paddingBottom: 16 }}>
-                <Image source={require("../../assets/postIcon.png")}></Image>
+                <Image source={{ uri: baseURL + data.item.ngo.image }}></Image>
+                {console.log(baseURL + data.item.ngo.image)}
                 <View style={{ marginLeft: 12, justifyContent: "center" }}>
                     <Text
                         style={{
