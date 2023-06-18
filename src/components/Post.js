@@ -1,8 +1,9 @@
 import { View, Image, Text, Pressable } from "react-native";
 import { Svg, Path } from "react-native-svg";
 import { baseURL } from "../request";
+import { useState } from "react";
 
-function LikeSvg() {
+function LikeSvg({isActive = false}) {
     return (
         <Svg
             width="15"
@@ -13,7 +14,8 @@ function LikeSvg() {
         >
             <Path
                 d="M13.2782 4.5C13.2782 2.84333 11.8789 1.5 10.1529 1.5C8.86287 1.5 7.75487 2.25067 7.2782 3.322C6.80153 2.25067 5.69353 1.5 4.40286 1.5C2.6782 1.5 1.2782 2.84333 1.2782 4.5C1.2782 9.31333 7.2782 12.5 7.2782 12.5C7.2782 12.5 13.2782 9.31333 13.2782 4.5Z"
-                stroke="#212124"
+                stroke={isActive ? "#E76565" : "#212124"}
+                fill={isActive ? "#E76565" : "transparent"}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -43,9 +45,18 @@ function CommentSvg() {
 }
 
 export default function Post({ data }) {
-    function onLike() {}
+    const [isLiked, toggleLiked] = useState(false);
 
-    function onComment() {}
+    const likesCount = (data.item.likes_count || 0) + isLiked;
+    const commentsCount = data.item.comments_count || 0;
+
+    function onLike() {
+        toggleLiked(prevState => !prevState);
+    }
+
+    function onComment() {
+
+    }
 
     function parseTimestamp(timestamp) {
         const now = new Date();
@@ -115,9 +126,9 @@ export default function Post({ data }) {
                     }}
                     onPress={() => onLike()}
                 >
-                    <LikeSvg />
+                    <LikeSvg isActive={isLiked} />
                     <Text style={{ fontFamily: "Helvetica", marginLeft: 10 }}>
-                        2440
+                        {likesCount}
                     </Text>
                 </Pressable>
                 <Pressable
@@ -131,7 +142,7 @@ export default function Post({ data }) {
                 >
                     <CommentSvg />
                     <Text style={{ fontFamily: "Helvetica", marginLeft: 10 }}>
-                        2440
+                        {data.item.comments_count}
                     </Text>
                 </Pressable>
             </View>
