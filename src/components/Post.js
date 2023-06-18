@@ -3,7 +3,7 @@ import { Svg, Path } from "react-native-svg";
 import { baseURL } from "../request";
 import { useState } from "react";
 
-function LikeSvg({isActive = false}) {
+function LikeSvg({ isActive = false }) {
     return (
         <Svg
             width="15"
@@ -51,22 +51,20 @@ export default function Post({ data }) {
     const commentsCount = data.item.comments_count || 0;
 
     function onLike() {
-        toggleLiked(prevState => !prevState);
+        toggleLiked((prevState) => !prevState);
     }
 
-    function onComment() {
-
-    }
+    function onComment() {}
 
     function parseTimestamp(timestamp) {
         const now = new Date();
         const targetTime = new Date(timestamp);
 
-        const timeDiff = targetTime.getTime() - now.getTime();
+        const timeDiff = now.getTime() - targetTime.getTime();
         const minutesDiff = Math.round(timeDiff / (1000 * 60)); // Convert milliseconds to minutes
 
         if (minutesDiff < 0) {
-            return "Właśnie wstawiono";
+            return "Przed chwilą";
         } else if (minutesDiff < 60) {
             return minutesDiff + " minut temu";
         } else if (minutesDiff < 1440) {
@@ -81,7 +79,15 @@ export default function Post({ data }) {
     return (
         <View style={{ padding: 22 }}>
             <View style={{ flexDirection: "row", paddingBottom: 16 }}>
-                <Image source={{ uri: baseURL + data.item.ngo.image }} style={{width:50, height: 50, resizeMode: "contain", borderRadius: 100}}></Image>
+                <Image
+                    source={{ uri: baseURL + data.item.ngo.image }}
+                    style={{
+                        width: 50,
+                        height: 50,
+                        resizeMode: "contain",
+                        borderRadius: 100,
+                    }}
+                ></Image>
                 <View style={{ marginLeft: 12, justifyContent: "center" }}>
                     <Text
                         style={{
